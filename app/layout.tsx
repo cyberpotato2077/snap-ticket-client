@@ -15,9 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Spacehub",
-	description:
-		"The most comprehensive source for spaceflight news and updates.",
+	title: "스냅 티켓",
+	description: "티켓팅",
 };
 
 export default function RootLayout({
@@ -26,7 +25,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="ko">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<Providers>{children}</Providers>
 			</body>
