@@ -8,16 +8,22 @@ import {
 	type UseFunnelResults,
 } from "@use-funnel/browser";
 import { Button } from "@/components/ui/button";
+import { Step1 } from "./step1";
+import { Step2 } from "./step2";
+import { Step3 } from "./step3";
+import { Step4 } from "./step4";
 
 type T = {
-	helloStep: { message: string };
-	worldStep: { message: string; message2: string };
+	step1: {};
+	step2: {};
+	step3: {};
+	step4: {};
 };
 
 export function useOpenPaymentsModal() {
 	const openPaymentsModal = () =>
-		overlay.open(({ isOpen, close }) => (
-			<PaymentsModal isOpen={isOpen} closeModal={close} />
+		overlay.open(({ isOpen, close, unmount }) => (
+			<PaymentsModal isOpen={isOpen} closeModal={unmount} />
 		));
 	return { openPaymentsModal };
 }
@@ -29,10 +35,8 @@ export function PaymentsModal({
 	const funnel = useFunnel<T>({
 		id: "use-funnel-history-example",
 		initial: {
-			step: "helloStep",
-			context: {
-				message: "Hello",
-			},
+			step: "step1",
+			context: {},
 		},
 	} satisfies UseFunnelOptions<T>);
 
@@ -47,25 +51,27 @@ export function PaymentsModal({
 					// 기본 동작 방지. 바깥 클릭해도 닫히지 않음
 					event.preventDefault();
 				}}
+				style={{ minWidth: 800 }}
 			>
 				<VisuallyHidden>
 					<DialogTitle>예메메</DialogTitle>
 				</VisuallyHidden>
 				<funnel.Render
-					helloStep={({ context, history }) => (
-						<>
-							<div> {context.message}, </div>
-							<Button
-								onClick={() => history.push("worldStep", { message2: "World" })}
-							>
-								hi
-							</Button>
-						</>
+					step1={({ history }) => (
+						<Step1 onNextStep={() => history.push("step2")} />
 					)}
-					worldStep={({ context }) => (
-						<div>
-							{context.message}, {context.message2}
-						</div>
+					step2={({ history }) => (
+						<Step2 onNextStep={() => history.push("step3")} />
+					)}
+					step3={({ history }) => (
+						<Step3 onNextStep={() => history.push("step4")} />
+					)}
+					step4={({ history }) => (
+						<Step4
+							onNextStep={() => {
+								closeModal();
+							}}
+						/>
 					)}
 				/>
 			</DialogContent>
