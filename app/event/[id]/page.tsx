@@ -1,14 +1,10 @@
-"use client";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useOpenPayments } from "@/components/payments/overlay";
+import { 예매하기Button } from "./예매하기Button";
 
 export default function ShowDetailPage() {
-	const { openPaymentsModal } = useOpenPayments();
-
 	return (
 		<main className="flex min-h-screen p-6 gap-4 bg-white">
 			{/* 왼쪽: 공연 정보 */}
@@ -54,9 +50,7 @@ export default function ShowDetailPage() {
 					서버 시간
 				</div>
 
-				<Button className="w-full mb-2" onClick={() => openPaymentsModal()}>
-					예매하기
-				</Button>
+				<예매하기Button />
 
 				<Card className="p-3 flex-1 flex flex-col gap-2">
 					<p className="text-sm font-medium">날짜:</p>

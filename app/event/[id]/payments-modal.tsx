@@ -2,7 +2,7 @@ import { overlay } from "overlay-kit";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-export function useOpenPayments() {
+export function useOpenPaymentsModal() {
 	const openPaymentsModal = () =>
 		overlay.open(({ isOpen, close }) => (
 			<PaymentsModal isOpen={isOpen} closeModal={close} />
