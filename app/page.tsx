@@ -1,8 +1,12 @@
-// app/page.tsx
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Routes } from "@/constants/Routes";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+	const router = useRouter();
+
 	return (
 		<main className="min-h-screen bg-white">
 			{/* 헤더 */}
@@ -29,7 +33,13 @@ export default function Home() {
 								<div className="text-red-500 font-semibold">공연 제목</div>
 							</CardContent>
 							<CardFooter>
-								<Button className="w-full" variant="outline">
+								<Button
+									className="w-full"
+									variant="outline"
+									onClick={() =>
+										router.push(Routes.이벤트_상세({ id: String(i) }))
+									}
+								>
 									예매하기
 								</Button>
 							</CardFooter>
