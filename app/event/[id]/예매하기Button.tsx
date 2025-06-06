@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@radix-ui/themes";
+import { Button } from "@/components/ui/button";
 import { useOpenPaymentsModal } from "./payments-modal";
 
 export function 예매하기Button() {

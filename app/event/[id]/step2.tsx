@@ -1,4 +1,3 @@
-// app/reserve/step2/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -17,7 +16,9 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 
-export default function ReserveStep2() {
+// @TODO: 스텝명 구체화
+
+export function Step2({ onNextStep }: { onNextStep: () => void }) {
 	const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
 	const toggleSeat = (seat: string) => {
@@ -120,7 +121,7 @@ export default function ReserveStep2() {
 					</Card>
 
 					<div className="flex gap-2">
-						<Button variant="outline" className="flex-1">
+						<Button variant="outline" className="flex-1" disabled>
 							이전 단계
 						</Button>
 						<Button
@@ -131,7 +132,11 @@ export default function ReserveStep2() {
 							좌석 다시 선택
 						</Button>
 					</div>
-					<Button className="w-full" disabled={selectedSeats.length === 0}>
+					<Button
+						className="w-full"
+						disabled={selectedSeats.length === 0}
+						onClick={onNextStep}
+					>
 						다음 단계
 					</Button>
 				</div>
