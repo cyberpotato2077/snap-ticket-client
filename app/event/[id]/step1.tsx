@@ -1,8 +1,8 @@
-// app/reserve/step1/page.tsx
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-export default function ReserveStep1() {
+// @TODO: 스텝명 구체화
+export function Step1({ onNextStep }: { onNextStep: () => void }) {
 	return (
 		<main className="p-6 space-y-4">
 			{/* 상단 단계 표시 */}
@@ -85,7 +85,9 @@ export default function ReserveStep1() {
 						<p className="font-bold">총 결제금액: 200,000원</p>
 					</Card>
 
-					<Button className="w-full">다음 단계</Button>
+					<Button className="w-full" onClick={onNextStep}>
+						다음 단계
+					</Button>
 				</div>
 			</div>
 

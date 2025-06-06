@@ -11,6 +11,9 @@ importers:
       '@radix-ui/react-checkbox':
         specifier: ^1.3.2
         version: 1.3.2(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-dialog':
+        specifier: ^1.1.14
+        version: 1.1.14(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-label':
         specifier: ^2.1.7
         version: 2.1.7(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -26,9 +29,15 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.7
         version: 1.2.7(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@radix-ui/react-visually-hidden':
+        specifier: ^1.2.3
+        version: 1.2.3(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/themes':
         specifier: ^3.2.1
         version: 3.2.1(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@suspensive/react':
+        specifier: ^3.2.2
+        version: 3.2.2(react@19.1.0)
       '@tanstack/react-query':
         specifier: ^5.79.0
         version: 5.79.0(react@19.1.0)
@@ -38,6 +47,12 @@ importers:
       '@toss/utils':
         specifier: ^1.6.1
         version: 1.6.1
+      '@use-funnel/browser':
+        specifier: ^0.0.15
+        version: 0.0.15(react@19.1.0)
+      '@use-funnel/next':
+        specifier: ^0.0.18
+        version: 0.0.18(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       axios:
         specifier: ^1.9.0
         version: 1.9.0
@@ -65,9 +80,6 @@ importers:
       overlay-kit:
         specifier: ^1.8.1
         version: 1.8.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      qs:
-        specifier: ^6.14.0
-        version: 6.14.0
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -1089,6 +1101,11 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@suspensive/react@3.2.2':
+    resolution: {integrity: sha512-iDTl+gu1RQDy5/pwCYeNLx8LHUmfbFuhaTOU7tb1PdJ1kVe2/2ar8jyIlOJBNAOCbwMe6yxrk5j1uXkHN6y/GA==}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
 
@@ -1218,6 +1235,22 @@ packages:
   '@types/react@19.1.6':
     resolution: {integrity: sha512-JeG0rEWak0N6Itr6QUx+X60uQmN+5t3j9r/OVDtWzFXKaj6kD1BwJzOksD0FF6iWxZlbE1kB0q9vtnU2ekqa1Q==}
 
+  '@use-funnel/browser@0.0.15':
+    resolution: {integrity: sha512-tHMyxZdvmuQw/pmeE0n3bOn81huxjfCG3TblmW0A/ivbdQN7unAp0Gn8CCeeiIbbztDL6IDw1v255WL2PR9MoQ==}
+    peerDependencies:
+      react: '>=16.8'
+
+  '@use-funnel/core@0.0.12':
+    resolution: {integrity: sha512-IikmJCqiQxbqxMAKdIEvX4MiuaM4nu0mfuAdnbI4CKf1FFLy/c4GHGKHW2+zm4aQAdEtxCuwou/wOwDhrTSWbg==}
+    peerDependencies:
+      react: '>=16.8'
+
+  '@use-funnel/next@0.0.18':
+    resolution: {integrity: sha512-fbJc9lmJAnwOxf0BDLW7BiHEAOfa7/z9vWU1kFdqcsdEKaIzvOxTvdf1VOqp+hapZhN/8JgL10nvCimvq2fXNQ==}
+    peerDependencies:
+      next: '>=12'
+      react: '>=16.8'
+
   aria-hidden@1.2.6:
     resolution: {integrity: sha512-ik3ZgC9dY/lYVVM++OISsaYDeg1tb0VtP5uL3ouh1koGOaUMDPpbFIei4JkFimWUFPn90sbMNMXQAIVOlnYKJA==}
     engines: {node: '>=10'}
@@ -1234,10 +1267,6 @@ packages:
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
-    engines: {node: '>= 0.4'}
-
-  call-bound@1.0.4:
-    resolution: {integrity: sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==}
     engines: {node: '>= 0.4'}
 
   caniuse-lite@1.0.30001720:
@@ -1524,10 +1553,6 @@ packages:
       react-router-dom:
         optional: true
 
-  object-inspect@1.13.4:
-    resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
-    engines: {node: '>= 0.4'}
-
   overlay-kit@1.8.1:
     resolution: {integrity: sha512-hejk+POLVh6pmOqt4WotQNcvFbi9JYRvmd37Z3KU6fFozFYJeis9JNq5g8LGn8kqgv/mzAwC60mXhoMkufq65Q==}
     peerDependencies:
@@ -1547,10 +1572,6 @@ packages:
 
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-
-  qs@6.14.0:
-    resolution: {integrity: sha512-YWWTjgABSKcvs/nWBi9PycY/JiPJqOD4JA6o9Sej2AtvSGarXxKC3OQSk4pAarbdQlKAh5D4FCQkJNkW+GAn3w==}
-    engines: {node: '>=0.6'}
 
   radix-ui@1.4.2:
     resolution: {integrity: sha512-fT/3YFPJzf2WUpqDoQi005GS8EpCi+53VhcLaHUj5fwkPYiZAjk1mSxFvbMA8Uq71L03n+WysuYC+mlKkXxt/Q==}
@@ -1615,22 +1636,6 @@ packages:
   sharp@0.34.2:
     resolution: {integrity: sha512-lszvBmB9QURERtyKT2bNmsgxXK0ShJrL/fvqlonCo7e6xBF8nT8xU6pW+PMIbLsz0RxQk3rgH9kd8UmvOzlMJg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
-
-  side-channel-list@1.0.0:
-    resolution: {integrity: sha512-FCLHtRD/gnpCiCHEiJLOwdmFP+wzCmDEkc9y7NsYxeF4u7Btsn1ZuwgwJGxImImHicJArLP4R0yX4c2KCrMrTA==}
-    engines: {node: '>= 0.4'}
-
-  side-channel-map@1.0.1:
-    resolution: {integrity: sha512-VCjCNfgMsby3tTdo02nbjtM/ewra6jPHmpThenkTYh8pG9ucZ/1P8So4u4FGBek/BjpOVsDCMoLA/iuBKIFXRA==}
-    engines: {node: '>= 0.4'}
-
-  side-channel-weakmap@1.0.2:
-    resolution: {integrity: sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A==}
-    engines: {node: '>= 0.4'}
-
-  side-channel@1.1.0:
-    resolution: {integrity: sha512-ZX99e6tRweoUXqR+VBrslhda51Nh5MTQwou5tnUDgbtyM0dBgmhEDtWGP/xbKn6hqfPRHujUNwz5fy/wbbhnpw==}
-    engines: {node: '>= 0.4'}
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
@@ -2676,6 +2681,10 @@ snapshots:
       '@types/react': 19.1.6
       '@types/react-dom': 19.1.5(@types/react@19.1.6)
 
+  '@suspensive/react@3.2.2(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+
   '@swc/counter@0.1.3': {}
 
   '@swc/helpers@0.5.15':
@@ -2789,6 +2798,21 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
+  '@use-funnel/browser@0.0.15(react@19.1.0)':
+    dependencies:
+      '@use-funnel/core': 0.0.12(react@19.1.0)
+      react: 19.1.0
+
+  '@use-funnel/core@0.0.12(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+
+  '@use-funnel/next@0.0.18(next@15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@use-funnel/core': 0.0.12(react@19.1.0)
+      next: 15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+
   aria-hidden@1.2.6:
     dependencies:
       tslib: 2.8.1
@@ -2811,11 +2835,6 @@ snapshots:
     dependencies:
       es-errors: 1.3.0
       function-bind: 1.1.2
-
-  call-bound@1.0.4:
-    dependencies:
-      call-bind-apply-helpers: 1.0.2
-      get-intrinsic: 1.3.0
 
   caniuse-lite@1.0.30001720: {}
 
@@ -3052,8 +3071,6 @@ snapshots:
     optionalDependencies:
       next: 15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
-  object-inspect@1.13.4: {}
-
   overlay-kit@1.8.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
@@ -3074,10 +3091,6 @@ snapshots:
       source-map-js: 1.2.1
 
   proxy-from-env@1.1.0: {}
-
-  qs@6.14.0:
-    dependencies:
-      side-channel: 1.1.0
 
   radix-ui@1.4.2(@types/react-dom@19.1.5(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
@@ -3209,34 +3222,6 @@ snapshots:
       '@img/sharp-win32-ia32': 0.34.2
       '@img/sharp-win32-x64': 0.34.2
     optional: true
-
-  side-channel-list@1.0.0:
-    dependencies:
-      es-errors: 1.3.0
-      object-inspect: 1.13.4
-
-  side-channel-map@1.0.1:
-    dependencies:
-      call-bound: 1.0.4
-      es-errors: 1.3.0
-      get-intrinsic: 1.3.0
-      object-inspect: 1.13.4
-
-  side-channel-weakmap@1.0.2:
-    dependencies:
-      call-bound: 1.0.4
-      es-errors: 1.3.0
-      get-intrinsic: 1.3.0
-      object-inspect: 1.13.4
-      side-channel-map: 1.0.1
-
-  side-channel@1.1.0:
-    dependencies:
-      es-errors: 1.3.0
-      object-inspect: 1.13.4
-      side-channel-list: 1.0.0
-      side-channel-map: 1.0.1
-      side-channel-weakmap: 1.0.2
 
   simple-swizzle@0.2.2:
     dependencies:
