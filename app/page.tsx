@@ -9,17 +9,6 @@ export default function Home() {
 
 	return (
 		<main className="min-h-screen bg-white">
-			{/* 헤더 */}
-			<header className="flex justify-between items-center p-4 border-b">
-				<div className="text-xl font-bold text-red-500 border p-2 rounded">
-					Snap TIC 예매 로고
-				</div>
-				<div className="flex gap-4 text-lg">
-					<button className="text-gray-700 hover:underline">로그인</button>
-					<button className="text-gray-700 hover:underline">내 티켓</button>
-				</div>
-			</header>
-
 			{/* 공연 리스트 */}
 			<section className="p-6">
 				<h2 className="text-2xl font-semibold mb-4">공연 목록</h2>
