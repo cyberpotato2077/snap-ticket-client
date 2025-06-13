@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "./providers";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
+import { Header } from "./header";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -27,7 +28,10 @@ export default function RootLayout({
 	return (
 		<html lang="ko">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);
