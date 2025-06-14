@@ -16,7 +16,7 @@ export function LocalTimeDisplay() {
 	}, []);
 
 	return (
-		<div className="text-center text-red-500 font-bold text-lg">
+		<div className="text-center font-bold text-lg">
 			{format(now, "yyyy년 MM월 dd일 (EEE) HH:mm:ss", { locale: ko })}
 		</div>
 	);

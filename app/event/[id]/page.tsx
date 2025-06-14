@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { 예매하기Button } from "./예매하기Button";
 import { LocalTimeDisplay } from "./local-time-display";
+import { CommentBox } from "./comment-box";
 
 export default function ShowDetailPage() {
 	return (
@@ -47,29 +48,14 @@ export default function ShowDetailPage() {
 			</div>
 
 			{/* 오른쪽: 예매 사이드바 */}
-			<aside className="w-80 shrink-0 border-l pl-6 sticky top-6 h-[calc(100vh-3rem)] flex flex-col gap-4">
+			<aside className="w-80 shrink-0 border-l pl-6 sticky top-6 h-[calc(100vh-150px)] flex flex-col gap-4">
 				{/* 서버 시간 */}
 				<LocalTimeDisplay />
 
 				{/* 예매 버튼 */}
 				<예매하기Button />
 
-				{/* 댓글 영역 */}
-				<Card className="flex-1 p-3 flex flex-col gap-3 overflow-hidden">
-					<h3 className="text-sm font-medium text-gray-700">댓글</h3>
-					<ScrollArea className="flex-1 pr-2">
-						{/* 예시 댓글 */}
-						<div className="text-sm text-gray-600">관람 기대돼요!</div>
-						<div className="text-sm text-gray-600">작년보다 좌석이 적네요</div>
-						{/* ... */}
-					</ScrollArea>
-				</Card>
-
-				{/* 댓글 입력 */}
-				<Input
-					placeholder="의견을 입력하세요"
-					className="mt-1 border-gray-300 focus:ring-red-500 focus:border-red-500"
-				/>
+				<CommentBox />
 			</aside>
 		</main>
 	);
