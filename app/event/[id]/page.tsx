@@ -1,7 +1,3 @@
-import { Card } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { 예매하기Button } from "./예매하기Button";
 import { LocalTimeDisplay } from "./local-time-display";
 import { CommentBox } from "./comment-box";
@@ -48,7 +44,7 @@ export default function ShowDetailPage() {
 			</div>
 
 			{/* 오른쪽: 예매 사이드바 */}
-			<aside className="w-80 shrink-0 pl-6 sticky top-6 h-[calc(100vh-150px)] flex flex-col gap-4">
+			<aside className="w-80 shrink-0 pl-6 h-[calc(100vh-120px)] flex flex-col gap-4">
 				{/* 서버 시간 */}
 				<LocalTimeDisplay />
 

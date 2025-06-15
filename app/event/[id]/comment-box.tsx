@@ -35,9 +35,6 @@ export function CommentBox() {
 
 	return (
 		<Card className="flex flex-col gap-4 flex-1 overflow-hidden">
-			<h3 className="text-sm font-medium text-gray-700 px-4 pt-4">댓글</h3>
-
-			{/* 스크롤 영역: 남은 공간 채움 */}
 			<ScrollArea className="flex-1 px-4">
 				<div ref={scrollRef} className="flex flex-col gap-2">
 					{comments.map((comment) => (
@@ -51,8 +48,7 @@ export function CommentBox() {
 				</div>
 			</ScrollArea>
 
-			{/* 인풋 + 버튼 */}
-			<div className="px-4 pb-4 flex gap-2">
+			<div className="px-4 flex gap-2">
 				<Input
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
