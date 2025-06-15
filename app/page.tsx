@@ -23,7 +23,7 @@ export default function Home() {
 						</section>
 					</div>
 					<div className="col-span-3">
-						<div className="top-5 sticky">
+						<div className="top-[97px] sticky">
 							<Card className="w-full">hi</Card>
 						</div>
 					</div>
