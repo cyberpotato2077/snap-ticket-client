@@ -46,7 +46,7 @@ export function PaymentsModal({
 					// 기본 동작 방지. 바깥 클릭해도 닫히지 않음
 					event.preventDefault();
 				}}
-				style={{ minWidth: 800 }}
+				style={{ minWidth: 1000 }}
 			>
 				<VisuallyHidden>
 					<DialogTitle>예메메</DialogTitle>
