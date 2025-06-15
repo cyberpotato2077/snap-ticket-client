@@ -41,14 +41,14 @@ export default function ShowDetailPage() {
 					<h2 className="text-lg font-semibold mb-3 text-gray-800">
 						공연 상세정보
 					</h2>
-					<div className="w-full h-96 bg-gray-100 flex items-center justify-center text-red-500 rounded-md">
+					<div className="w-full aspect-[1/2] bg-gray-100 flex items-center justify-center text-red-500 rounded-md">
 						상세 이미지
 					</div>
 				</section>
 			</div>
 
 			{/* 오른쪽: 예매 사이드바 */}
-			<aside className="w-80 shrink-0 border-l pl-6 sticky top-6 h-[calc(100vh-150px)] flex flex-col gap-4">
+			<aside className="w-80 shrink-0 pl-6 sticky top-6 h-[calc(100vh-150px)] flex flex-col gap-4">
 				{/* 서버 시간 */}
 				<LocalTimeDisplay />
 
