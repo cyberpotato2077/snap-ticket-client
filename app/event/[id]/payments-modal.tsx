@@ -2,12 +2,7 @@ import { overlay } from "overlay-kit";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
-import {
-	useFunnel,
-	type UseFunnelOptions,
-	type UseFunnelResults,
-} from "@use-funnel/browser";
-import { Button } from "@/components/ui/button";
+import { useFunnel, type UseFunnelOptions } from "@use-funnel/browser";
 import { Step1 } from "./step1";
 import { Step2 } from "./step2";
 import { Step3 } from "./step3";

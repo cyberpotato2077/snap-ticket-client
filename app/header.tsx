@@ -8,7 +8,7 @@ export function Header() {
 	const router = useRouter();
 
 	return (
-		<header className="flex justify-between items-center p-4 border-b">
+		<header className="flex justify-between items-center p-4 border-b top-0 sticky z-11 bg-white">
 			<button
 				type="button"
 				className="text-xl cursor-pointer"
