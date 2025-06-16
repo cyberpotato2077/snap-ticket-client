@@ -8,45 +8,125 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
 
-// @TODO: 스텝명 구체화
+const seatShapes = [
+	{
+		id: "A",
+		label: "A",
+		shape: "circle",
+		cx: 80,
+		cy: 80,
+		r: 30,
+		color: "#a855f7",
+		available: 100,
+	},
+	{
+		id: "B",
+		label: "B",
+		shape: "rect",
+		x: 140,
+		y: 50,
+		width: 60,
+		height: 60,
+		color: "#a855f7",
+		available: 100,
+	},
+	{
+		id: "1",
+		label: "1",
+		shape: "ellipse",
+		cx: 80,
+		cy: 180,
+		rx: 40,
+		ry: 25,
+		color: "#84cc16",
+		available: 50,
+	},
+	{
+		id: "2",
+		label: "2",
+		shape: "polygon",
+		points: "160,180 190,210 130,210",
+		color: "#84cc16",
+		available: 50,
+	},
+	{
+		id: "3",
+		label: "3",
+		shape: "path",
+		d: "M240,180 A40,40 0 0,1 280,220 L240,180 Z",
+		color: "#84cc16",
+		available: 50,
+	},
+];
 
 export function Step2({ onNextStep }: { onNextStep: () => void }) {
 	const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
-	const toggleSeat = (seat: string) => {
+	const toggleSeat = (seatId: string) => {
 		setSelectedSeats((prev) =>
-			prev.includes(seat) ? prev.filter((s) => s !== seat) : [...prev, seat],
+			prev.includes(seatId)
+				? prev.filter((id) => id !== seatId)
+				: [...prev, seatId],
 		);
 	};
 
-	const renderSeat = (label: string, color: string, available: number) => (
-		<Tooltip key={label}>
-			<TooltipTrigger asChild>
-				<div
-					onClick={() => toggleSeat(label)}
-					className={`flex items-center justify-center text-lg font-bold border cursor-pointer transition-all
-            ${color === "purple" ? "bg-purple-500" : "bg-lime-400"} 
-            ${selectedSeats.includes(label) ? "ring-4 ring-black" : ""}`}
-					style={{ width: 80, height: 80 }}
-				>
-					{label}
-				</div>
-			</TooltipTrigger>
-			<TooltipContent>{`${label}석 잔여 ${available}석`}</TooltipContent>
-		</Tooltip>
-	);
+	const renderSeat = (seat: any) => {
+		const isSelected = selectedSeats.includes(seat.id);
+		const strokeProps = isSelected ? { stroke: "black", strokeWidth: 4 } : {};
+
+		const commonProps = {
+			onClick: () => toggleSeat(seat.id),
+			fill: seat.color,
+			cursor: "pointer",
+			...strokeProps,
+		};
+
+		const seatElement = (() => {
+			switch (seat.shape) {
+				case "circle":
+					return (
+						<circle cx={seat.cx} cy={seat.cy} r={seat.r} {...commonProps} />
+					);
+				case "rect":
+					return (
+						<rect
+							x={seat.x}
+							y={seat.y}
+							width={seat.width}
+							height={seat.height}
+							{...commonProps}
+						/>
+					);
+				case "ellipse":
+					return (
+						<ellipse
+							cx={seat.cx}
+							cy={seat.cy}
+							rx={seat.rx}
+							ry={seat.ry}
+							{...commonProps}
+						/>
+					);
+				case "polygon":
+					return <polygon points={seat.points} {...commonProps} />;
+				case "path":
+					return <path d={seat.d} {...commonProps} />;
+				default:
+					return null;
+			}
+		})();
+
+		return (
+			<Tooltip key={seat.id}>
+				<TooltipTrigger asChild>{seatElement}</TooltipTrigger>
+				<TooltipContent>{`${seat.label}석 잔여 ${seat.available}석`}</TooltipContent>
+			</Tooltip>
+		);
+	};
 
 	return (
 		<main className="p-6 space-y-4">
-			{/* 단계 표시 */}
 			<div className="grid grid-cols-6 text-center text-sm font-semibold border-b pb-2">
 				<div className="text-gray-500">01 공연일 / 회차선택</div>
 				<div className="text-black">02 좌석선택</div>
@@ -55,51 +135,21 @@ export function Step2({ onNextStep }: { onNextStep: () => void }) {
 				<div className="text-gray-500">05 결제하기</div>
 			</div>
 
-			{/* 공연일/회차 변경 */}
 			<div className="flex gap-4">
-				<Select>
-					<SelectTrigger className="w-[200px]">
-						<SelectValue placeholder="공연일 변경" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectItem value="2025-05-01">2025-05-01</SelectItem>
-					</SelectContent>
-				</Select>
-				<Select>
-					<SelectTrigger className="w-[200px]">
-						<SelectValue placeholder="회차 변경" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectItem value="19:00">19:00</SelectItem>
-					</SelectContent>
-				</Select>
-			</div>
-
-			{/* 좌석 선택 영역 */}
-			<div className="flex gap-4">
-				{/* 무대 및 좌석 */}
-				<div className="flex-1 space-y-4">
-					<div className="text-center font-bold border py-2 bg-gray-100">
+				<svg
+					viewBox="0 0 400 300"
+					className="border bg-gray-100 flex-1"
+					style={{ height: 300 }}
+				>
+					{/* 무대 표시 */}
+					<text x="50%" y="30" textAnchor="middle" fontWeight="bold">
 						STAGE
-					</div>
+					</text>
 
-					{/* 좌석 영역 */}
-					<div className="grid grid-cols-3 gap-4 justify-items-center">
-						{/* R석 */}
-						{renderSeat("A", "purple", 100)}
-						{renderSeat("B", "purple", 100)}
-						<div></div>
-						{/* S석 */}
-						{renderSeat("1", "green", 50)}
-						{renderSeat("2", "green", 50)}
-						{renderSeat("3", "green", 50)}
-						<div className="col-span-3 flex justify-center">
-							{renderSeat("4", "green", 50)}
-						</div>
-					</div>
-				</div>
+					{/* 좌석 렌더링 */}
+					{seatShapes.map(renderSeat)}
+				</svg>
 
-				{/* 정보 영역 */}
 				<div className="w-[300px] space-y-4">
 					<Card className="p-4 text-sm space-y-1">
 						<h3 className="font-semibold">좌석등급 / 가격</h3>
@@ -132,6 +182,7 @@ export function Step2({ onNextStep }: { onNextStep: () => void }) {
 							좌석 다시 선택
 						</Button>
 					</div>
+
 					<Button
 						className="w-full"
 						disabled={selectedSeats.length === 0}
