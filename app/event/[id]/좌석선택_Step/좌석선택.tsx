@@ -42,8 +42,7 @@ const availableSeats = new Set([
   '7-9',
 ]);
 
-// @TODO: 스텝명 구체화
-export function Step3({ onNextStep }: { onNextStep: () => void }) {
+export function 좌석선택({ onNextStep }: { onNextStep: () => void }) {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const toggleSeat = (seatId: string) => {
@@ -52,16 +51,7 @@ export function Step3({ onNextStep }: { onNextStep: () => void }) {
   };
 
   return (
-    <main className="p-6 space-y-4">
-      {/* 상단 단계 및 선택 */}
-      <div className="grid grid-cols-6 text-center text-sm font-semibold border-b pb-2">
-        <div className="text-gray-500">01 공연일 / 회차선택</div>
-        <div className="text-black">02 좌석선택</div>
-        <div className="text-gray-500">03 가격 / 할인 선택</div>
-        <div className="text-gray-500">04 배송선택 / 주문확인</div>
-        <div className="text-gray-500">05 결제하기</div>
-      </div>
-
+    <>
       <div className="flex gap-4">
         <Select>
           <SelectTrigger className="w-[200px]">
@@ -144,6 +134,6 @@ export function Step3({ onNextStep }: { onNextStep: () => void }) {
           </Button>
         </div>
       </div>
-    </main>
+    </>
   );
 }
