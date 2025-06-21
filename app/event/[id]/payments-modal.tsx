@@ -47,9 +47,12 @@ export function PaymentsModal({ isOpen, closeModal }: { isOpen: boolean; closeMo
         </VisuallyHidden>
         <funnel.Render
           step1={({ history }) => <공연일_회차선택_Step onNextStep={() => history.push('step2')} />}
-          step2={({ history }) => <좌석선택_Step onNextStep={() => history.push('step3')} />}
+          step2={({ history }) => (
+            <좌석선택_Step onPrevStep={() => history.push('step1')} onNextStep={() => history.push('step3')} />
+          )}
           step3={({ history }) => (
             <가격할인_Step
+              onPrevStep={() => history.push('step2')}
               onNextStep={() => {
                 closeModal();
               }}

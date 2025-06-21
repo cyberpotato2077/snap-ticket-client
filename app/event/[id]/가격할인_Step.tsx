@@ -6,7 +6,13 @@ import { Stepper } from './stepper';
 
 // @TODO: 스텝명 구체화
 
-export function 가격할인_Step({ onNextStep }: { onNextStep: () => void }) {
+export function 가격할인_Step({
+  onPrevStep,
+  onNextStep,
+}: {
+  onPrevStep: () => void;
+  onNextStep: () => void;
+}) {
   return (
     <main className="p-6 space-y-4">
       <Stepper step="가격 / 할인 선택" />
@@ -156,7 +162,9 @@ export function 가격할인_Step({ onNextStep }: { onNextStep: () => void }) {
           </Card>
 
           <div className="flex justify-between">
-            <Button variant="outline">이전 단계</Button>
+            <Button variant="outline" onClick={onPrevStep}>
+              이전 단계
+            </Button>
             <Button onClick={onNextStep}>다음 단계</Button>
           </div>
         </div>

@@ -7,7 +7,13 @@ import { useState } from 'react';
 import { match } from 'ts-pattern';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export function 좌석선택_Step({ onNextStep }: { onNextStep: () => void }) {
+export function 좌석선택_Step({
+  onPrevStep,
+  onNextStep,
+}: {
+  onPrevStep: () => void;
+  onNextStep: () => void;
+}) {
   const [step, setStep] = useState<'구역선택' | '좌석선택'>('구역선택');
   return (
     <main className="p-6 space-y-4">
@@ -58,20 +64,26 @@ export function 좌석선택_Step({ onNextStep }: { onNextStep: () => void }) {
             <p className="text-gray-500">좌석을 선택해주세요.</p>
           </Card>
 
+          <Button variant="outline" className="flex-1">
+            좌석 다시 선택
+          </Button>
           <div className="flex gap-2">
-            <Button variant="outline" className="flex-1">
-              좌석 다시 선택
+            <Button
+              variant="outline"
+              onClick={() => {
+                onPrevStep();
+              }}
+            >
+              이전 단계
+            </Button>
+            <Button
+              onClick={() => {
+                onNextStep();
+              }}
+            >
+              다음 단계
             </Button>
           </div>
-
-          <Button
-            className="w-full"
-            onClick={() => {
-              onNextStep();
-            }}
-          >
-            다음 단계
-          </Button>
         </div>
       </div>
     </main>
