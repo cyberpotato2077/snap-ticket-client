@@ -3,10 +3,9 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import { useFunnel, type UseFunnelOptions } from '@use-funnel/browser';
-import { Step1 } from './step1';
-import { Step2 } from './step2';
-import { Step3 } from './step3';
-import { Step4 } from './step4';
+import { 공연일_회차선택_Step } from './공연일_회차선택_Step';
+import { 가격할인_Step } from './가격할인_Step';
+import { 좌석선택_Step } from './좌석선택_Step';
 
 type T = {
   step1: {};
@@ -47,16 +46,19 @@ export function PaymentsModal({ isOpen, closeModal }: { isOpen: boolean; closeMo
           <DialogTitle>예메메</DialogTitle>
         </VisuallyHidden>
         <funnel.Render
-          step1={({ history }) => <Step1 onNextStep={() => history.push('step2')} />}
-          step2={({ history }) => <Step2 onNextStep={() => history.push('step3')} />}
-          step3={({ history }) => <Step3 onNextStep={() => history.push('step4')} />}
-          step4={({ history }) => (
-            <Step4
+          step1={({ history }) => <공연일_회차선택_Step onNextStep={() => history.push('step2')} />}
+          step2={({ history }) => (
+            <좌석선택_Step onPrevStep={() => history.push('step1')} onNextStep={() => history.push('step3')} />
+          )}
+          step3={({ history }) => (
+            <가격할인_Step
+              onPrevStep={() => history.push('step2')}
               onNextStep={() => {
                 closeModal();
               }}
             />
           )}
+          step4={({ history }) => <></>}
         />
       </DialogContent>
     </Dialog>

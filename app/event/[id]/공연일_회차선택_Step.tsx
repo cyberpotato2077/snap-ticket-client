@@ -6,8 +6,7 @@ import { useState } from 'react';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { AlertCircleIcon } from 'lucide-react';
 
-// @TODO: 스텝명 구체화
-export function Step1({ onNextStep }: { onNextStep: () => void }) {
+export function 공연일_회차선택_Step({ onNextStep }: { onNextStep: () => void }) {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (

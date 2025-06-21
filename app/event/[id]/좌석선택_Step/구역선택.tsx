@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Stepper } from '../stepper';
 
 const seatShapes = [
   {
@@ -56,11 +57,18 @@ const seatShapes = [
   },
 ];
 
-export function Step2({ onNextStep }: { onNextStep: () => void }) {
+export function 구역선택({
+  step,
+  setStep,
+}: {
+  step: '구역선택' | '좌석선택';
+  setStep: Dispatch<SetStateAction<'좌석선택' | '구역선택'>>;
+}) {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const toggleSeat = (seatId: string) => {
     setSelectedSeats((prev) => (prev.includes(seatId) ? prev.filter((id) => id !== seatId) : [...prev, seatId]));
+    setStep('좌석선택');
   };
 
   const renderSeat = (seat: any) => {
@@ -100,60 +108,15 @@ export function Step2({ onNextStep }: { onNextStep: () => void }) {
   };
 
   return (
-    <main className="p-6 space-y-4">
-      <div className="grid grid-cols-6 text-center text-sm font-semibold border-b pb-2">
-        <div className="text-gray-500">01 공연일 / 회차선택</div>
-        <div className="text-black">02 좌석선택</div>
-        <div className="text-gray-500">03 가격 / 할인 선택</div>
-        <div className="text-gray-500">04 배송선택 / 주문확인</div>
-        <div className="text-gray-500">05 결제하기</div>
-      </div>
+    <svg viewBox="0 0 400 300" className="border bg-gray-100 flex-1" style={{ height: 300 }}>
+      <title>구역 선택</title>
+      {/* 무대 표시 */}
+      <text x="50%" y="30" textAnchor="middle" fontWeight="bold">
+        STAGE
+      </text>
 
-      <div className="flex gap-4">
-        <svg viewBox="0 0 400 300" className="border bg-gray-100 flex-1" style={{ height: 300 }}>
-          {/* 무대 표시 */}
-          <text x="50%" y="30" textAnchor="middle" fontWeight="bold">
-            STAGE
-          </text>
-
-          {/* 좌석 렌더링 */}
-          {seatShapes.map(renderSeat)}
-        </svg>
-
-        <div className="w-[300px] space-y-4">
-          <Card className="p-4 text-sm space-y-1">
-            <h3 className="font-semibold">좌석등급 / 가격</h3>
-            <p className="text-purple-500">R석: 180,000원 (100석)</p>
-            <p className="text-green-500">S석: 140,000원 (50석)</p>
-          </Card>
-
-          <Card className="p-4 text-sm space-y-1">
-            <h3 className="font-semibold">선택한 좌석</h3>
-            {selectedSeats.length > 0 ? (
-              <ul className="list-disc pl-4">
-                {selectedSeats.map((s) => (
-                  <li key={s}>{s}석</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-500">좌석을 선택해주세요.</p>
-            )}
-          </Card>
-
-          <div className="flex gap-2">
-            <Button variant="outline" className="flex-1" disabled>
-              이전 단계
-            </Button>
-            <Button variant="outline" className="flex-1" onClick={() => setSelectedSeats([])}>
-              좌석 다시 선택
-            </Button>
-          </div>
-
-          <Button className="w-full" disabled={selectedSeats.length === 0} onClick={onNextStep}>
-            다음 단계
-          </Button>
-        </div>
-      </div>
-    </main>
+      {/* 좌석 렌더링 */}
+      {seatShapes.map(renderSeat)}
+    </svg>
   );
 }
