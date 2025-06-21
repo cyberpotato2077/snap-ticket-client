@@ -20,7 +20,7 @@ export function 좌석선택_Step({
       <Stepper step="좌석선택" />
 
       <div className="flex gap-4">
-        <div>
+        <div className="flex-1">
           <div className="flex justify-around">
             <div className="flex items-center gap-2">
               <div>관람일변경</div>
@@ -64,12 +64,16 @@ export function 좌석선택_Step({
             <p className="text-gray-500">좌석을 선택해주세요.</p>
           </Card>
 
-          <Button variant="outline" className="flex-1">
-            좌석 다시 선택
-          </Button>
+          <div className="flex">
+            <Button variant="outline" className="flex-1">
+              좌석 다시 선택
+            </Button>
+          </div>
+
           <div className="flex gap-2">
             <Button
               variant="outline"
+              className="flex-1"
               onClick={() => {
                 onPrevStep();
               }}
@@ -77,6 +81,7 @@ export function 좌석선택_Step({
               이전 단계
             </Button>
             <Button
+              className="flex-1"
               onClick={() => {
                 onNextStep();
               }}

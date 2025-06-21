@@ -161,11 +161,13 @@ export function 가격할인_Step({
             </CardContent>
           </Card>
 
-          <div className="flex justify-between">
-            <Button variant="outline" onClick={onPrevStep}>
+          <div className="flex justify-between gap-2">
+            <Button variant="outline" className="flex-1" onClick={onPrevStep}>
               이전 단계
             </Button>
-            <Button onClick={onNextStep}>다음 단계</Button>
+            <Button className="flex-1" onClick={onNextStep}>
+              다음 단계
+            </Button>
           </div>
         </div>
       </div>
