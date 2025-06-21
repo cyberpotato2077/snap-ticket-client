@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -57,11 +57,18 @@ const seatShapes = [
   },
 ];
 
-export function 구역선택() {
+export function 구역선택({
+  step,
+  setStep,
+}: {
+  step: '구역선택' | '좌석선택';
+  setStep: Dispatch<SetStateAction<'좌석선택' | '구역선택'>>;
+}) {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const toggleSeat = (seatId: string) => {
     setSelectedSeats((prev) => (prev.includes(seatId) ? prev.filter((id) => id !== seatId) : [...prev, seatId]));
+    setStep('좌석선택');
   };
 
   const renderSeat = (seat: any) => {

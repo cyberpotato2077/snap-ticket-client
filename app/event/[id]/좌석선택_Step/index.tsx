@@ -1,4 +1,3 @@
-import { useFunnel, type UseFunnelOptions } from '@use-funnel/browser';
 import { Stepper } from '../stepper';
 import { 구역선택 } from './구역선택';
 import { 좌석선택 } from './좌석선택';
@@ -6,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { match } from 'ts-pattern';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export function 좌석선택_Step({ onNextStep }: { onNextStep: () => void }) {
   const [step, setStep] = useState<'구역선택' | '좌석선택'>('구역선택');
@@ -14,10 +14,38 @@ export function 좌석선택_Step({ onNextStep }: { onNextStep: () => void }) {
       <Stepper step="좌석선택" />
 
       <div className="flex gap-4">
-        {match(step)
-          .with('구역선택', () => <구역선택 />)
-          .with('좌석선택', () => <좌석선택 />)
-          .exhaustive()}
+        <div>
+          <div className="flex justify-around">
+            <div className="flex items-center gap-2">
+              <div>관람일변경</div>
+              <Select>
+                <SelectTrigger className="w-20">
+                  <SelectValue placeholder="123" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={'1'}>1</SelectItem>
+                  <SelectItem value={'2'}>2</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-center gap-2">
+              <div>관람일변경</div>
+              <Select>
+                <SelectTrigger className="w-20">
+                  <SelectValue placeholder="123" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={'1'}>1</SelectItem>
+                  <SelectItem value={'2'}>2</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          {match(step)
+            .with('구역선택', () => <구역선택 step={step} setStep={setStep} />)
+            .with('좌석선택', () => <좌석선택 step={step} setStep={setStep} />)
+            .exhaustive()}
+        </div>
         <div className="w-[300px] space-y-4">
           <Card className="p-4 text-sm space-y-1">
             <h3 className="font-semibold">좌석등급 / 가격</h3>
@@ -31,9 +59,6 @@ export function 좌석선택_Step({ onNextStep }: { onNextStep: () => void }) {
           </Card>
 
           <div className="flex gap-2">
-            <Button variant="outline" className="flex-1" disabled>
-              이전 단계
-            </Button>
             <Button variant="outline" className="flex-1">
               좌석 다시 선택
             </Button>
@@ -42,11 +67,7 @@ export function 좌석선택_Step({ onNextStep }: { onNextStep: () => void }) {
           <Button
             className="w-full"
             onClick={() => {
-              if (step === '구역선택') {
-                setStep('좌석선택');
-              } else {
-                onNextStep();
-              }
+              onNextStep();
             }}
           >
             다음 단계

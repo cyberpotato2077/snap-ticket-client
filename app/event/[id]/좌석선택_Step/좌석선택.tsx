@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 
 const ROWS = 10;
 const COLS = 15;
@@ -42,7 +40,13 @@ const availableSeats = new Set([
   '7-9',
 ]);
 
-export function 좌석선택() {
+export function 좌석선택({
+  step,
+  setStep,
+}: {
+  step: '구역선택' | '좌석선택';
+  setStep: Dispatch<SetStateAction<'좌석선택' | '구역선택'>>;
+}) {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const toggleSeat = (seatId: string) => {
@@ -81,6 +85,13 @@ export function 좌석선택() {
           })}
         </div>
       </div>
+      <Button
+        onClick={() => {
+          setStep('구역선택');
+        }}
+      >
+        전체구역으로 돌아가기
+      </Button>
     </>
   );
 }
