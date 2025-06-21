@@ -42,7 +42,7 @@ const availableSeats = new Set([
   '7-9',
 ]);
 
-export function 좌석선택({ onNextStep }: { onNextStep: () => void }) {
+export function 좌석선택() {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const toggleSeat = (seatId: string) => {
@@ -52,25 +52,6 @@ export function 좌석선택({ onNextStep }: { onNextStep: () => void }) {
 
   return (
     <>
-      <div className="flex gap-4">
-        <Select>
-          <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="공연장 변경" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="hall1">대공연장</SelectItem>
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="회차 변경" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="night">2025-06-10 19:00</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
       <p className="text-sm text-gray-600">3 구역의 좌석 배치도입니다</p>
 
       {/* 좌석 격자 */}
@@ -98,40 +79,6 @@ export function 좌석선택({ onNextStep }: { onNextStep: () => void }) {
               </Tooltip>
             );
           })}
-        </div>
-
-        {/* 정보 및 버튼 */}
-        <div className="w-[300px] space-y-4">
-          <Card className="p-4 text-sm space-y-1">
-            <h3 className="font-semibold">좌석등급 / 가격</h3>
-            <p className="text-purple-500">R석: 180,000원 (100석)</p>
-            <p className="text-green-500">S석: 140,000원 (50석)</p>
-          </Card>
-
-          <Card className="p-4 text-sm">
-            <h3 className="font-semibold mb-1">선택한 좌석</h3>
-            {selectedSeats.length > 0 ? (
-              <ul className="list-disc pl-4">
-                {selectedSeats.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-500">좌석을 선택해주세요.</p>
-            )}
-          </Card>
-
-          <div className="flex gap-2">
-            <Button variant="outline" className="flex-1" disabled>
-              이전 단계
-            </Button>
-            <Button variant="outline" className="flex-1" onClick={() => setSelectedSeats([])}>
-              좌석 다시 선택
-            </Button>
-          </div>
-          <Button className="w-full" disabled={selectedSeats.length === 0} onClick={onNextStep}>
-            다음 단계
-          </Button>
         </div>
       </div>
     </>
