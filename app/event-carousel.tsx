@@ -1,40 +1,34 @@
-import * as React from "react";
-import Autoplay from "embla-carousel-autoplay";
+import * as React from 'react';
+import Autoplay from 'embla-carousel-autoplay';
 
-import { Card, CardContent } from "@/components/ui/card";
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	CarouselNext,
-	CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export function EventCarousel() {
-	return (
-		<Carousel
-			className="w-full relative"
-			plugins={[
-				Autoplay({
-					delay: 5_000,
-				}),
-			]}
-		>
-			<CarouselContent>
-				{Array.from({ length: 5 }).map((_, index) => (
-					<CarouselItem key={index}>
-						<div className="p-1">
-							<Card>
-								<CardContent className="aspect-[5/2] flex items-center justify-center p-6">
-									<span className="text-4xl font-semibold">{index + 1}</span>
-								</CardContent>
-							</Card>
-						</div>
-					</CarouselItem>
-				))}
-			</CarouselContent>
-			<CarouselPrevious />
-			<CarouselNext />
-		</Carousel>
-	);
+  return (
+    <Carousel
+      className="w-full relative"
+      plugins={[
+        Autoplay({
+          delay: 5_000,
+        }),
+      ]}
+    >
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="aspect-[5/2] flex items-center justify-center p-6">
+                  <span className="text-4xl font-semibold">{index + 1}</span>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  );
 }
